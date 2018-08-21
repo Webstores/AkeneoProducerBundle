@@ -2,6 +2,7 @@
 
 namespace Sylake\AkeneoProducerBundle\Connector\Listener;
 
+use Doctrine\Common\Collections\Collection;
 use Pim\Component\Catalog\Model\AttributeInterface;
 use Sylake\AkeneoProducerBundle\Connector\ItemSetInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
@@ -26,7 +27,10 @@ final class AttributeSavedListener
 
         $this->itemSet->add($attribute);
 
-        foreach ($attribute->getOptions() as $attributeOption) {
+        /** @var Collection $attributeOptions */
+        $attributeOptions = $attribute->getOptions();
+
+        foreach ($attributeOptions as $attributeOption) {
             $this->itemSet->add($attributeOption);
         }
     }

@@ -18,13 +18,13 @@ final class ItemProjector implements ItemProjectorInterface
     /** @var ItemWriterInterface */
     private $writer;
 
-    /** @var DefaultValuesProviderInterface|null */
+    /** @var DefaultValuesProviderInterface */
     private $parametersProvider;
 
     public function __construct(
         ItemProcessorInterface $processor,
         ItemWriterInterface $writer,
-        DefaultValuesProviderInterface $valuesProvider = null
+        DefaultValuesProviderInterface $valuesProvider
     ) {
         $this->processor = $processor;
         $this->writer = $writer;

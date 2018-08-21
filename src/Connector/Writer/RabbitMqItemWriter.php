@@ -33,11 +33,15 @@ final class RabbitMqItemWriter implements ItemWriterInterface
     public function write(array $items)
     {
         foreach ($items as $item) {
-            $this->producer->publish(json_encode([
+            $json = json_encode([
                 'type' => $this->messageType,
                 'payload' => $item,
                 'recordedOn' => (new \DateTime())->format('Y-m-d H:i:s'),
-            ]));
+            ]);
+
+            if ($json !== false) {
+                $this->producer->publish($json);
+            }
         }
     }
 }

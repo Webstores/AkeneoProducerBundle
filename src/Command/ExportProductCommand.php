@@ -15,12 +15,12 @@ final class ExportProductCommand extends Command
     /** @var ProductQueryBuilderFactoryInterface */
     private $productQueryBuilderFactory;
 
-    /** @var ItemProjector */
+    /** @var ItemProjectorInterface */
     private $itemProjector;
 
     /**
      * @param ProductQueryBuilderFactoryInterface $productQueryBuilderFactory
-     * @param ItemProjector $itemProjector
+     * @param ItemProjectorInterface $itemProjector
      */
     public function __construct(ProductQueryBuilderFactoryInterface $productQueryBuilderFactory, ItemProjectorInterface $itemProjector)
     {
