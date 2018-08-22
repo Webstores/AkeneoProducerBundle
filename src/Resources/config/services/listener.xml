@@ -56,7 +56,7 @@
         </service>
 
         <service class="Sylake\AkeneoProducerBundle\Connector\Projector\ItemProjector">
-            <argument type="service" id="pim_connector.processor.normalization.product" />
+            <argument type="service" id="sylake_akeneo_producer.normalization.product_processor" />
             <argument type="service" id="sylake_akeneo_producer.connector.writer.rabbit_mq.product" />
             <argument type="service" id="sylake_akeneo_producer.connector.job_parameters" />
             <tag name="sylake_akeneo_producer.connector.item_projector"

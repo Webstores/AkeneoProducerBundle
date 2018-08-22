@@ -4,8 +4,30 @@
     <services>
         <service class="Sylake\AkeneoProducerBundle\Command\ExportProductCommand">
             <argument type="service" id="pim_catalog.query.product_query_builder_factory" />
-            <argument type="service" id="sylake_akeneo_producer.connector.item_projector" />
+            <argument type="service" id="pim_catalog.saver.product" />
             <tag name="console.command" />
+        </service>
+
+        <service class="Sylake\AkeneoProducerBundle\Command\ExportProductsCommand">
+            <argument type="service" id="pim_catalog.query.product_query_builder_factory" />
+            <argument type="service" id="pim_catalog.saver.product" />
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="console.command" />
+        </service>
+
+        <service class="Sylake\AkeneoProducerBundle\Command\ExportCategoriesCommand">
+            <argument type="service" id="pim_catalog.repository.category" />
+            <argument type="service" id="doctrine.orm.default_entity_manager" />
+            <tag name="console.command" />
+        </service>
+
+        <service id="sylake_akeneo_producer.normalization.product_processor" class="Sylake\AkeneoProducerBundle\Normalization\ProductProcessor">
+            <argument type="service" id="pim_catalog.normalizer.standard.product" />
+            <argument type="service" id="pim_catalog.repository.channel" />
+            <argument type="service" id="pim_catalog.repository.attribute" />
+            <argument type="service" id="pim_connector.processor.bulk_media_fetcher" />
+            <argument type="service" id="pim_catalog.values_filler.product" />
+            <argument type="service" id="pim_connector.doctrine.cache_clearer" />
         </service>
     </services>
 </container>
